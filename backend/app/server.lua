@@ -27,8 +27,8 @@ local mw_inject_version = require("app.middleware.inject_app_info")
 
 app:use(mw_cookie())
 app:use(mw_session({
-    session_key = "__app__", -- the key injected in cookie
-    session_aes_key = "aes_&gdk325dh888ffffld", -- should set by yourself
+    session_key = "__rilladmin_app__", -- the key injected in cookie
+    session_aes_key = "aes_&%$#@(*&Gjjd563hdngds35781fhxgh", -- should set by yourself
     timeout = 3600 -- default session timeout is 3600 seconds
 }))
 
@@ -42,15 +42,12 @@ app:use(mw_uploader({
 	dir = upload_config.dir
 }))
 
+local cors_header = require "cors_header"
+
 --自定义中间件2: 设置响应头
 app:use(function(req, res, next)
-        --暂时 这么处理 跨域访问 
-    res:set_header("X-Powered-By", "Lor framework")
-    res:set_header("Access-Control-Allow-Origin", "http://192.168.1.25:10000")
-
-    res:set_header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
-    res:set_header("Access-Control-Allow-Credentials", "true")
-    res:set_header("Access-Control-Allow-Headers", "Authorization,Content-Type,Accept,Origin,User-Agent,DNT,Cache-Control,X-Mx-ReqToken,Keep-Alive,X-Requested-With,If-Modified-Since,X-Msys-Subaccount,X-Sparky")
+    cors_header(res)
+    -- res:set_header("Access-Control-Allow-Headers", "Authorization,Content-Type,Accept,Origin,User-Agent,DNT,Cache-Control,X-Mx-ReqToken,Keep-Alive,X-Requested-With,If-Modified-Since,X-Msys-Subaccount,X-Sparky")
     next()
 end)
 
@@ -58,14 +55,10 @@ router(app) -- 业务路由处理
 
 -- 错误处理插件，可根据需要定义多个
 app:erroruse(function(err, req, res, next)
-    -- ngx.log(ngx.ERR, err)
     ERROR("error: ", err)
-    --暂时 这么处理 跨域访问 
-    res:set_header("Access-Control-Allow-Origin", "http://192.168.1.25:10000")
 
-    res:set_header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
-    res:set_header("Access-Control-Allow-Credentials", "true")
-    res:set_header("Access-Control-Allow-Headers", "Authorization,Content-Type,Accept,Origin,User-Agent,DNT,Cache-Control,X-Mx-ReqToken,Keep-Alive,X-Requested-With,If-Modified-Since,X-Msys-Subaccount,X-Sparky")
+    cors_header(res)
+
     local method = req.method and string_lower(req.method)
     if method == "options" then
         res:set_header("Access-Control-Max-Age", "1728000")

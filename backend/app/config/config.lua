@@ -56,4 +56,5 @@ return {
 		dir = "/opt/fishadmin/static", -- 文件目录，修改此值时须同时修改nginx配置文件中的$static_files_path值
 	},	
 
+	cors_whitelist =  "http://192.168.1.25:10000", --请修改自己对应的 frontend url
 }
