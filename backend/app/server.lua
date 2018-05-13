@@ -5,6 +5,8 @@ local lor = require("lor.index")
 local router = require("app.router")
 local app = lor()
 
+local cors_header = require "cors_header"
+
 local config = require("app.config.config")
 local whitelist = config.whitelist
 local view_config = config.view_config
@@ -42,12 +44,10 @@ app:use(mw_uploader({
 	dir = upload_config.dir
 }))
 
-local cors_header = require "cors_header"
 
 --自定义中间件2: 设置响应头
 app:use(function(req, res, next)
     cors_header(res)
-    -- res:set_header("Access-Control-Allow-Headers", "Authorization,Content-Type,Accept,Origin,User-Agent,DNT,Cache-Control,X-Mx-ReqToken,Keep-Alive,X-Requested-With,If-Modified-Since,X-Msys-Subaccount,X-Sparky")
     next()
 end)
 
