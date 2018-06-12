@@ -13,12 +13,11 @@ const service = axios.create({
 // request拦截器
 service.interceptors.request.use(config => {
   if (store.getters.token) {
-    config.headers['Authorization'] = getToken()
+    config.headers['Authorization'] = `Bearer ${getToken()}`
   }
   return config
 }, error => {
-  // Do something with request error
-  console.log(error) // for debug
+  console.log('service error:' + error) // for debug
   Promise.reject(error)
 })
 

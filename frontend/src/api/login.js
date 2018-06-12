@@ -24,3 +24,17 @@ export function logout() {
     method: 'post'
   })
 }
+
+export function tradehistory() {
+  return request({
+    url: '/api/tradehistory',
+    method: 'get'
+  })
+}
+
+export function trade() {
+  return request({
+    url: '/api/trade',
+    method: 'post'
+  })
+}

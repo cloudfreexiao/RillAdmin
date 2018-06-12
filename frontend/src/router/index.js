@@ -40,48 +40,40 @@ export const constantRouterMap = [
   {
     path: '/account',
     component: Layout,
-    redirect: '/account/index',
-    name: 'account',
     alwaysShow: true,
     meta: { title: '账号管理', icon: 'peoples' },
     children: [
       {
         path: 'index',
-        name: '/account/index',
+        name: '/accountinfo',
         component: _import('account/index'),
-        meta: { title: '账号列表', icon: 'eye' }
+        meta: { title: '账号信息', icon: 'eye' }
       }
     ]
   },
 
-  {
-    path: '/gamerole',
-    component: Layout,
-    redirect: '/gamerole/index',
-    name: '',
-    meta: { title: '游戏角色管理', icon: 'message' },
-    children: [
-      {
-        path: 'changepro',
-        name: '/gamerole/changepro',
-        component: _import('gamerole/index'),
-        meta: { title: '属性修改', icon: 'eye' }
-      },
-      {
-        path: 'recharge',
-        name: '/gamerole/recharge',
-        component: _import('gamerole/index'),
-        meta: { title: '模拟充值', icon: 'user' }
-      },
-      {
-        path: 'sendmail',
-        name: '/gamerole/sendmail',
-        component: _import('gamerole/index'),
-        meta: { title: '邮件发送', icon: 'user' }
-      }
+  // {
+  //   path: '/gamerole',
+  //   component: Layout,
+  //   redirect: '/gamerole/index',
+  //   name: '',
+  //   meta: { title: '好友赠送管理', icon: 'message' },
+  //   children: [
+  //     {
+  //       path: 'recharge',
+  //       name: '/gamerole/recharge',
+  //       component: _import('gamerole/index'),
+  //       meta: { title: '模拟充值', icon: 'user' }
+  //     },
+  //     {
+  //       path: 'sendmail',
+  //       name: '/gamerole/sendmail',
+  //       component: _import('gamerole/index'),
+  //       meta: { title: '邮件发送', icon: 'user' }
+  //     }
 
-    ]
-  },
+  //   ]
+  // },
 
   { path: '*', redirect: '/404', hidden: true }
 ]
