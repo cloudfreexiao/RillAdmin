@@ -5,10 +5,10 @@
 
 <script>
 
-import {
-  getInfo,
-  Model
-} from '@/api/account'
+// import {
+//   getInfo,
+//   Model
+// } from '@/api/account'
 
 export default {
   data() {
