@@ -26,9 +26,11 @@ export default {
       'sidebar'
     ]),
     routes() {
-      return this.$router.options.routes
+      return this.$store.state.permission.routers
+      // return this.$router.options.routes
     },
     isCollapse() {
+      // return !this.$store.state.app.sidebar.opened
       return !this.sidebar.opened
     }
   }
