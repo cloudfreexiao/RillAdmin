@@ -15,15 +15,15 @@ typedef struct timeval {
     time_t tv_sec;
     time_t tv_usec;
 } timeval;
-   void uuid_generate(uuid_t out);
-   void uuid_generate_random(uuid_t out);
-   void uuid_generate_time(uuid_t out);
+    void uuid_generate(uuid_t out);
+    void uuid_generate_random(uuid_t out);
+    void uuid_generate_time(uuid_t out);
     int uuid_generate_time_safe(uuid_t out);
     int uuid_parse(const char *in, uuid_t uu);
-   void uuid_unparse(const uuid_t uu, char *out);
+    void uuid_unparse(const uuid_t uu, char *out);
     int uuid_type(const uuid_t uu);
     int uuid_variant(const uuid_t uu);
- time_t uuid_time(const uuid_t uu, struct timeval *ret_tv);
+    time_t uuid_time(const uuid_t uu, struct timeval *ret_tv);
 ]]
 
 local lib = os == "OSX" and C or ffi_load "uuid"

@@ -24,7 +24,7 @@ return function (req, username, password)
     if result and not err then
         if result and #result == 1 then
             isExist = true
-            user = result[1] 
+            user = result[1]
             userid = user.id
         end
     else

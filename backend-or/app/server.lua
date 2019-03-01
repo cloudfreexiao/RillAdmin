@@ -23,7 +23,7 @@ app:conf("views", view_config.views)
 local mw_cookie = require("lor.lib.middleware.cookie")
 local mw_session = require("lor.lib.middleware.session")
 local mw_check_login = require("app.middleware.check_login")
-local mw_uploader = require("app.middleware.uploader")
+-- local mw_uploader = require("app.middleware.uploader")
 -- 自定义中间件1: 注入一些全局变量供模板渲染使用
 local mw_inject_version = require("app.middleware.inject_app_info")
 
@@ -39,10 +39,10 @@ app:use(mw_inject_version())
 -- intercepter: login or not
 app:use(mw_check_login(whitelist))
 
--- uploader
-app:use(mw_uploader({
-	dir = upload_config.dir
-}))
+-- -- uploader
+-- app:use(mw_uploader({
+-- 	dir = upload_config.dir
+-- }))
 
 
 --自定义中间件2: 设置响应头
@@ -55,7 +55,7 @@ router(app) -- 业务路由处理
 
 -- 错误处理插件，可根据需要定义多个
 app:erroruse(function(err, req, res, next)
-    ERROR("error: ", err)
+    -- ERROR("error: ", err)
 
     cors_header(res)
 

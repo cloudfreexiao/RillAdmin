@@ -46,15 +46,14 @@ return {
 		},
 		pool_config = {
 			max_idle_timeout = 20000, -- 20s
-        	pool_size = 50 -- connection pool size
+			pool_size = 50 -- connection pool size
 		}
 	},
 
-	
 	-- 上传文件配置，如上传的头像、文章中的图片等
 	upload_config = {
 		dir = "/opt/fishadmin/static", -- 文件目录，修改此值时须同时修改nginx配置文件中的$static_files_path值
-	},	
+	},
 
-	cors_whitelist =  "http://192.168.1.25:10000", --请修改自己对应的 frontend url 
+	cors_whitelist =  "http://192.168.1.35:9527", --请修改自己对应的 frontend url 
 }

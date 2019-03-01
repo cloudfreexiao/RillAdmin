@@ -10,7 +10,7 @@ function user_model:new(username, password, avatar, rolelv)
 end
 
 function user_model:query(username, password)
-    local res, err =  db:query("select * from user where username=? and password=?", {username, password})
+    local res, err = db:query("select * from user where username=? and password=?", {username, password})
     return res, err
 end
 
