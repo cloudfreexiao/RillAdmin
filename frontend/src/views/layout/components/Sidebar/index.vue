@@ -30,8 +30,8 @@ export default {
       // return this.$router.options.routes
     },
     isCollapse() {
-      // return !this.$store.state.app.sidebar.opened
-      return !this.sidebar.opened
+      return !this.$store.state.app.sidebar.opened
+      // return !this.sidebar.opened
     }
   }
 }
